@@ -21,8 +21,29 @@ public:
         this->nodeType=nodeType;
         this->paramList=new QList<NodeParams*>();
     }
+    QString* toParamsString()
+    {
+//        <parameters>
+//            <param var="" bingVar="" dataType="" type=""/>
+//            <param var="" bingVar="" dataType="" type=""/>
+//            <param var="" bingVar="" dataType="" type=""/>
+//            <param var="" bingVar="" dataType="" type=""/>
+//        </parameters>
+        QString *parameters=new QString();
+         QString *tmp=new QString("<param var=\":VAR\" bingVar=\":BINDVAR\" dataType=\":DATATYPE\" type=\":TYPE\"/> ");
+         for(int i=0;i<paramList->count();++i)
+         {
+            QString *t=new QString(*tmp);
+            t->replace(":VAR",*(paramList->at(i)->bindVarName));
+            t->replace(":BINDVAR",*(paramList->at(i)->bindVarName));
+            t->replace(":DATATYPE",*(paramList->at(i)->bindVarName));
+            t->replace(":TYPE",*(paramList->at(i)->bindVarName));
+         }
+    }
+
     TaskNode()
     {
+
     }
     void setPrevTask(TaskInfo *task)
     {

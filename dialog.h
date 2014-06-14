@@ -37,7 +37,7 @@ private:
     Ui::Dialog *ui;
     bool isDrag;
     QPoint curMousePoint;
-     QPoint startMousePoint;
+    QPoint startMousePoint;
     bool shouldLink;
     int objectType;
     QList<TaskNode*> *lst;
